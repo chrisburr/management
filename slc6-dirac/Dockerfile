@@ -7,7 +7,8 @@ ARG RUNIT_RPM=runit-2.1.2-1.el6.x86_64.rpm
 
 RUN yum install -y git openssl freetype fontconfig pixman libXrender htop psmisc && \
     yum localinstall -y "http://diracproject.web.cern.ch/diracproject/rpm/${RUNIT_RPM}" && \
+    rm /etc/init/runsvdir.conf && \
     yum clean all && \
     rm -rf /var/lib/apt/lists/* /lib/modules/* /lib/firmware/* /lib/kbd /var/cache/yum
 
-CMD ["/usr/sbin/init"]
+CMD ["/sbin/init"]
